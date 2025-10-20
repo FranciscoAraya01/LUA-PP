@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  openresty:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      - ./lua:/usr/local/openresty/nginx/lua
+      - ./html:/usr/local/openresty/nginx/html    # ← AGREGAR ESTA LÍNEA
+    depends_on:
+      - redis
+    environment:
+      - OPENWEATHER_API_KEY=demo_key
+      - WEATHERAPI_KEY=demo_key
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
