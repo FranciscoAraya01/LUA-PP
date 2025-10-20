@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Meteorológico - API Aggregator</title>
+    <title>Dashboard Meteorológico</title>
     <style>
         * {
             margin: 0;
@@ -384,7 +384,7 @@
     <div class="container">
         <header>
             <h1>🌤️ Dashboard Meteorológico</h1>
-            <p>API Aggregator - Sistema de Clima Multi-Fuente con Lua</p>
+            <p></p>
         </header>
 
         <!-- Search Section -->
@@ -400,7 +400,7 @@
                 <button class="city-chip" onclick="quickSearch('Madrid')">Madrid</button>
                 <button class="city-chip" onclick="quickSearch('London')">London</button>
                 <button class="city-chip" onclick="quickSearch('Tokyo')">Tokyo</button>
-                <button class="city-chip" onclick="quickSearch('New York')">New York</button>
+                <button class="city-chip" onclick="quickSearch('Nueva York')">New York</button>
                 <button class="city-chip" onclick="quickSearch('San Jose')">San José</button>
                 <button class="city-chip" onclick="quickSearch('Heredia')">Heredia</button>
                 <button class="city-chip" onclick="quickSearch('Paris')">París</button>
@@ -425,7 +425,7 @@
 
         <footer>
             <p>Desarrollado con OpenResty + Lua + Redis</p>
-            <p>Powered by Open-Meteo API</p>
+
         </footer>
     </div>
 
@@ -517,9 +517,11 @@
                     </div>
                     
                     <div style="display: flex; align-items: center; gap: 10px;">
-                        <span class="cache-indicator ${cacheClass}">
-                            ${cacheIcon} ${cacheStatus}
-                        </span>
+                        ${cacheStatus === 'HIT' ? `
+                            <span class="cache-indicator ${cacheClass}">
+                                ${cacheIcon} ${cacheStatus}
+                            </span>
+                        ` : ''}
                         <span style="font-size: 0.85em; color: #666;">
                             ${new Date().toLocaleString('es-ES')}
                         </span>

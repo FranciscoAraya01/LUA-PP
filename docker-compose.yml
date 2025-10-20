@@ -8,12 +8,12 @@ services:
     volumes:
       - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
       - ./lua:/usr/local/openresty/nginx/lua
-      - ./html:/usr/local/openresty/nginx/html    # ← AGREGAR ESTA LÍNEA
+      - ./html:/usr/local/openresty/nginx/html 
     depends_on:
       - redis
     environment:
-      - OPENWEATHER_API_KEY=demo_key
-      - WEATHERAPI_KEY=demo_key
+      - OPENWEATHER_API_KEY=808fa6640cc1ba415e3c35d6d732cb7a
+      - WEATHERAPI_KEY=5a60124a83224a3c80e234124251810
 
   redis:
     image: redis:alpine
